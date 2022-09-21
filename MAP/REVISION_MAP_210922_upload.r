@@ -10,7 +10,7 @@ library(ggrepel)
 library(ggplot2)
 
 ###Import Data####
-path <- "C:/Users/u7436417/Dropbox/UNI/THESIS/WRITING/FIGURES/MAP"
+path <- ""
 setwd(path)
 df <- read.csv('prostanthera_study_group_AVH_210922.csv', header = TRUE, stringsAsFactors = TRUE) #AVH occurrences
 cities <- read.csv('cities2.csv') #city labels w lat longs
