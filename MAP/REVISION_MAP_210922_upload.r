@@ -4,7 +4,6 @@
 library(ggmap)
 library(ozmaps)
 library(sf)
-library(viridis)
 library(ggspatial)
 library(ggrepel)
 library(ggplot2)
