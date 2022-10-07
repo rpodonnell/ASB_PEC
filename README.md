@@ -4,7 +4,7 @@ This repository contains R scripts used for figures and analysis in O'Donnell et
 
 MAP - This script produces a species distribution map with cartographic features, seen as Fig. 1 in O'Donnell et al. (2022)
 
-DART - This script outlines the processing and analysis pipeline that was used on genomic SNP data delivered by DArTseq.
+DART - This script outlines the processing and analysis pipeline that was used on genomic SNP data delivered by DArTseq. This includes:
   - Data import and filtering
   - Identification and removal of potential clones
   - PCA ordination
