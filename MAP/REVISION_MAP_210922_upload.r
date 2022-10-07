@@ -22,11 +22,15 @@ cap_cities <- read.csv('cap_cities_only.csv')
 ###generate map of Australia with states
 
 oz_states <- ozmaps::ozmap_states
-oz_states
 
 ##ggmapping
+##make map of australia for inset plot
+ggm1 <- ggplot(oz_states)+geom_sf(fill = "white") + theme_void() + coord_sf(xlim=c(114, 153), ylim=c(-43.63203, -9.229287)) +
+  geom_rect(xmin=145,ymin=-39.3,xmax=152.3,ymax=-33.3, fill=NA,colour="black",size=0.8) + theme(plot.background = element_rect(color = "black"))
 
-ggplot(oz_states) + 
+##make closeup plot
+
+ggm2 <- ggplot(oz_states) + 
   geom_sf(fill = "white") + #set state fill 
   theme_bw() + #set theme
   coord_sf(xlim=c(145, 152.3), ylim=c(-39.3, -33.3)) + #set lat long frame
@@ -44,8 +48,14 @@ ggplot(oz_states) +
                    size=3, fill=alpha(c("grey"),0.5), fontface = "bold",
                    box.padding = unit(1,"lines"), point.padding = unit(0.3, "lines"),segment.size=0.7) + ## add dartpop labels
   geom_point(cities, mapping=aes(x=long, y=lat),size=1.5) + #add city points
-  geom_text_repel(cap_cities, mapping = aes(x=long, y=lat, label=city), size=3) + #add city labels
+  geom_text_repel(cap_cities, mapping = aes(x=long, y=lat, label=city), size=3,hjust=0.6) + #add city labels
   theme(legend.position = c(0.81, 0.22), legend.title = element_blank(), ### move legend
         legend.key.size = unit(0.15, "cm"), legend.text=element_text(size=8.5, face="italic")) +
   theme(legend.background = element_rect(fill="white",size=0.5, 
                                          linetype="solid", colour ="black")) ##legend fill and border
+
+##plot closeup plot with australia map inset as minimap
+gg_inset_map1 = ggdraw() + draw_plot(ggm2) + draw_plot(ggm1, .15,.77,.2,.2)
+gg_inset_map1
+ggsave("filename.pdf", device="pdf")
+
