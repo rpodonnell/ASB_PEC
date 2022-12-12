@@ -64,7 +64,7 @@ analysis_name=""
 ## Calculate other parameters
 dartname=list.files(indir,"Report_DPro21-6054_2_moreOrders_SNP_2.csv")
 dartfile=file.path(indir,dartname)
-metadataname=list.files(indir,"DPro18_3736_DPro19_4334_SampleTrackingFiles-3-metadata.csv")
+metadataname=list.files(indir,"DPro21-6054_coanalysis_metadata3.csv")
 metadatafile=file.path(indir,metadataname)
 outdir=file.path("output",analysis_name)
 if(!dir.exists("output")) dir.create("output")
@@ -409,8 +409,8 @@ gl2structure(ECgl9, indNames = ECgl9@ind.names, addcolumns = ECgl9@pop, ploidy =
 geno <- struct2geno(input.file= paste0(analysis_name,".str", sep=''), ploidy = 2, FORMAT=2, extra.row=1, extra.column=2) 
 
 ##perform snmf runs
-# remove.snmfProject("las_230921.str.snmfProject") ## if you need to clear your snmf runs and start from scratch
-#project1 = load.snmfProject("PEC_300921.str.snmfProject") ###use to load existing snmf project from file
+# remove.snmfProject("***.str.snmfProject") ## if you need to clear your snmf runs and start from scratch
+#project1 = load.snmfProject("***.str.snmfProject") ###use to load existing snmf project from file
 project1 = NULL
 project1 = snmf(paste0(analysis_name,".str.geno", sep=''), CPU = 3, K = 1:8 ,entropy = TRUE, repetitions = 50,project = "new")
 
